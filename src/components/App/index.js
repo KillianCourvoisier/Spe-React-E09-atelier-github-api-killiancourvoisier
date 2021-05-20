@@ -1,15 +1,19 @@
 // == Import npm
 import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { Message } from 'semantic-ui-react';
 
 // == Import
-import reactLogo from './react-logo.svg';
-import './styles.css';
+import Header from '../Header';
+import Repos from '../Repos';
+import './style.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App</h1>
+    <Header />
+    <Repos />
+    <Message content="je suis un message" />
   </div>
 );
 
