@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import './style.scss';
 import logo from 'src/assets/images/logo-github.png';
 
-const Header = ({ inputValue, onInputChange, onFormSubmit }) => (
+const Header = ({
+  inputValue, onInputChange, onFormSubmit, loading,
+}) => (
   <header className="header">
     <img className="header__logo" src={logo} alt="logo github" />
     <Segment>
@@ -15,6 +17,7 @@ const Header = ({ inputValue, onInputChange, onFormSubmit }) => (
       >
         <Input
           fluid
+          loading={loading}
           icon="search"
           iconPosition="left"
           placeholder="Chercher un repo Github"
@@ -31,6 +34,7 @@ const Header = ({ inputValue, onInputChange, onFormSubmit }) => (
 );
 
 Header.propTypes = {
+  loading: PropTypes.bool.isRequired,
   inputValue: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
