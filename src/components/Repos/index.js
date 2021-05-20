@@ -5,12 +5,18 @@ import './style.scss';
 
 const Repos = ({ list }) => (
   <Card.Group itemsPerRow={3}>
-    <Card
-      image="https://avatars3.githubusercontent.com/u/698437?v=4"
-      header="Elito Kerba"
-      meta="Friend"
-      description="Elito is a famous Warrior in Clepsydre TableGame"
-    />
+    {
+      list.map((repoObj) => (
+        <Card
+          key={repoObj.id}
+          image={repoObj.owner.avatar_url}
+          header={repoObj.name}
+          meta={repoObj.owner.login}
+          description={repoObj.description ? repoObj.description : ''}
+        />
+      ))
+    }
+
   </Card.Group>
 );
 
@@ -22,7 +28,8 @@ Repos.propTypes = {
       full_name: PropTypes.string.isRequired,
       description: PropTypes.string,
       owner: PropTypes.shape({
-
+        login: PropTypes.string.isRequired,
+        avatar_url: PropTypes.string.isRequired,
       }),
 
     }),

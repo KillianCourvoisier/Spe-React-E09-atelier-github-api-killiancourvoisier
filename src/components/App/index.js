@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Message } from 'semantic-ui-react';
 
 // == Import
+import data from 'src/data/repos';
 import Header from '../Header';
 import Repos from '../Repos';
 import './style.scss';
@@ -21,7 +22,7 @@ const App = () => (
       }}
     />
     <Message content="je suis un message" />
-    <Repos />
+    <Repos list={data.items} />
   </div>
 );
 
