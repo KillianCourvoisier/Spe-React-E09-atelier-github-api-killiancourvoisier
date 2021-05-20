@@ -1,8 +1,8 @@
 // == Import npm
 import React, { useState } from 'react';
-import 'semantic-ui-css/semantic.min.css';
-import { Message } from 'semantic-ui-react';
 import axios from 'axios';
+import { Message } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 
 // == Import
 import Header from '../Header';
@@ -22,25 +22,28 @@ const App = () => {
     setInputText(textSaisi);
   };
 
-  const handleFormSubmit = () => {
+  const fetchDatas = async () => {
     setLoading(true);
 
-    axios({
-      method: 'get',
-      url: `${BASE_URL}${inputText}`,
-    })
-      .then((response) => {
-        console.log(response.data);
-        setRepos(response.data.items);
-        const newMessage = `La recherche à générer ${response.data.total_count} résultats`;
-        setMessage(newMessage);
-      })
-      .catch((error) => {
-        console.trace(error);
-      })
-      .finally(() => {
-        setLoading(false);
+    try {
+      const results = await axios({
+        method: 'get',
+        url: `${BASE_URL}${inputText}`,
       });
+
+      setRepos(results.data.items);
+      const newMessage = `La recherche a générée ${results.data.total_count} résultats`;
+      setMessage(newMessage);
+    }
+    catch (e) {
+      console.trace(e);
+    }
+
+    setLoading(false);
+  };
+
+  const handleFormSubmit = () => {
+    fetchDatas();
   };
 
   return (
