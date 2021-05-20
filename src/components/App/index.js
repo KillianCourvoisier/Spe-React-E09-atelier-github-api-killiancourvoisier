@@ -12,8 +12,8 @@ import './style.scss';
 const App = () => (
   <div className="app">
     <Header />
-    <Repos />
     <Message content="je suis un message" />
+    <Repos />
   </div>
 );
 
