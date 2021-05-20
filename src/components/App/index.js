@@ -11,7 +11,15 @@ import './style.scss';
 // == Composant
 const App = () => (
   <div className="app">
-    <Header />
+    <Header
+      inputValue="coucou"
+      onInputChange={(textSaisi) => {
+        console.log('change with', textSaisi);
+      }}
+      onFormSubmit={() => {
+        console.log('submit');
+      }}
+    />
     <Message content="je suis un message" />
     <Repos />
   </div>
