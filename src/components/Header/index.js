@@ -17,6 +17,7 @@ const Header = ({
       >
         <Input
           fluid
+          disabled={loading}
           loading={loading}
           icon="search"
           iconPosition="left"
