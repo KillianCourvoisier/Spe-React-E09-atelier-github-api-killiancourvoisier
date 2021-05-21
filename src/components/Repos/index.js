@@ -4,20 +4,23 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const Repos = ({ list }) => (
-  <Card.Group itemsPerRow={3}>
+  <div className="repos-list">
     {
       list.map((repoObj) => (
-        <Card
-          key={repoObj.id}
-          image={repoObj.owner.avatar_url}
-          header={repoObj.name}
-          meta={repoObj.owner.login}
-          description={repoObj.description ? repoObj.description : ''}
-        />
+        <div className="repo-item">
+          <Card
+            style={{ height: '100%' }}
+            fluid
+            key={repoObj.id}
+            image={repoObj.owner.avatar_url}
+            header={repoObj.name}
+            meta={repoObj.owner.login}
+            description={repoObj.description ? repoObj.description : ''}
+          />
+        </div>
       ))
     }
-
-  </Card.Group>
+  </div>
 );
 
 Repos.propTypes = {
