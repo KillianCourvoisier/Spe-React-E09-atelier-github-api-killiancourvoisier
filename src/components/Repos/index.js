@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Card } from 'semantic-ui-react';
 import './style.scss';
 
 const Repos = ({ list }) => (
@@ -8,15 +9,18 @@ const Repos = ({ list }) => (
     {
       list.map((repoObj) => (
         <div className="repo-item">
-          <Card
-            style={{ height: '100%' }}
-            fluid
-            key={repoObj.id}
-            image={repoObj.owner.avatar_url}
-            header={repoObj.name}
-            meta={repoObj.owner.login}
-            description={repoObj.description ? repoObj.description : ''}
-          />
+          <Link to={`/repos/${repoObj.full_name}`}>
+            <Card
+              onClick={() => {}}
+              style={{ height: '100%' }}
+              fluid
+              key={repoObj.id}
+              image={repoObj.owner.avatar_url}
+              header={repoObj.name}
+              meta={repoObj.owner.login}
+              description={repoObj.description ? repoObj.description : ''}
+            />
+          </Link>
         </div>
       ))
     }

@@ -1,0 +1,16 @@
+.single-repo {
+    h1, h2 {
+      border-bottom: 1px solid #333;
+    }
+    .owner {
+      display: flex;
+      align-items: center;
+      &-avatar {
+        width: 150px;
+      }
+      &-login {
+        font-size: 36px;
+        margin: 0 10px;
+      }
+    }
+  }
